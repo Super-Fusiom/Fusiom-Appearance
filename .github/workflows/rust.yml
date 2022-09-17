@@ -16,8 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Latest Glib version
-      run: sudo apt install libgtk2.0-dev
+    - name: Apt install
+      run: sudo apt install gtk4 libgtk2.0-dev
     - name: Build
       run: cargo build --verbose
     - name: Run tests
