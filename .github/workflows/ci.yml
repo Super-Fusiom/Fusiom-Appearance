@@ -10,7 +10,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build (macos-latest):
+  build-(macos-latest):
     runs-on: macos-latest
 
     steps:
@@ -27,7 +27,7 @@ jobs:
       run: |
         rustup component add clippy
         cargo clippy --all-targets
-  build (windows-latest):
+  build-(windows-latest):
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
