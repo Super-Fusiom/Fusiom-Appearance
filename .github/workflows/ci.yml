@@ -19,10 +19,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Stable
-    - if [[ ${{ matrix.os }} == "macos-latest" ]]; then
-       run: brew install pango
-      fi
-      run: cargo test
+      run: |
+        brew install pango
+        cargo test
     - name: Oldstable
       run: |
         rustup default 1.57.0
