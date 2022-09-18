@@ -10,11 +10,8 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        os: [windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+  build (macos-latest):
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -30,3 +27,22 @@ jobs:
       run: |
         rustup component add clippy
         cargo clippy --all-targets
+  build (windows-latest):
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Stable
+      run: |
+        brew install pango
+        cargo test
+    - name: Oldstable
+      run: |
+        rustup default 1.57.0
+        cargo test
+    - name: Clippy
+      run: |
+        rustup component add clippy
+        cargo clippy --all-targets
+
+
+
